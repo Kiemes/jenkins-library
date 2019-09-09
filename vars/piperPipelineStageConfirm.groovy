@@ -31,6 +31,8 @@ import static com.sap.piper.Prerequisites.checkScript
  */
 @GenerateStageDocumentation(defaultStageName = 'Confirm')
 void call(Map parameters = [:]) {
+    echo "start ...."
+
     def script = checkScript(this, parameters) ?: this
     def stageName = parameters.stageName?:env.STAGE_NAME
 
@@ -46,11 +48,13 @@ void call(Map parameters = [:]) {
     boolean approval = false
     def userInput
 
+    echo "Before timeout"
     timeout(
         unit: 'HOURS',
         time: config.manualConfirmationTimeout
     ){
         if (currentBuild.result == 'UNSTABLE') {
+            echo "unsable"
             while(!approval) {
                 userInput = input(
                     message: 'Approve continuation of pipeline, although some steps failed.',
@@ -73,7 +77,12 @@ void call(Map parameters = [:]) {
             echo "Reason:\n-------------\n${userInput.reason}"
             echo "Acknowledged:\n-------------\n${userInput.acknowledgement}"
         } else {
+            echo "in else"
+
             input message: config.manualConfirmationMessage
+
+            echo "after input call"
+
         }
 
     }
