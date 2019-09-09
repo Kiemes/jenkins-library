@@ -79,10 +79,10 @@ void call(Map parameters = [:]) {
         } else {
             echo "in else"
 
-            input {
-                message: config.manualConfirmationMessage
+            input (
+                message: config.manualConfirmationMessage,
                 submitter: 'D053838'
-            }
+            )
 
             echo "after input call"
 
