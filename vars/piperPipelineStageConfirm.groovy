@@ -81,11 +81,10 @@ void call(Map parameters = [:]) {
 
             def result = input (
                 message: config.manualConfirmationMessage,
-                submitter: 'D053838',
-                submitterParameter: 'submitter'
+                submitter: 'D053838'
             )
 
-            echo "It was ${result.submitter} who approved the pipeline."
+            echo "It was ${result} who approved the pipeline."
 
             echo "after input call"
 
