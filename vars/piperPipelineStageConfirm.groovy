@@ -81,7 +81,7 @@ void call(Map parameters = [:]) {
 
             def result = input (
                 message: config.manualConfirmationMessage,
-                submitter: 'D053838'
+                submitter: 'D046838'
             )
 
             echo "It was ${result} who approved the pipeline."
