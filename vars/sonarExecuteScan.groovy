@@ -126,6 +126,11 @@ void call(Map parameters = [:]) {
 
                     loadCertificates(config)
 
+                    sh 'DEBUG: PWD'
+                    sh 'pwd'
+                    sh 'ls -la'
+                    sh 'ls -la ..'
+
                     if(config.organization) config.options.add("sonar.organization=${config.organization}")
                     if(config.projectVersion) config.options.add("sonar.projectVersion=${config.projectVersion}")
                     // prefix options
