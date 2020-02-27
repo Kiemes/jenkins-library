@@ -126,7 +126,7 @@ void call(Map parameters = [:]) {
 
                     loadCertificates(config)
 
-                    sh 'DEBUG: PWD'
+                    sh 'echo "DEBUG: PWD"'
                     sh 'pwd'
                     sh 'ls -la'
                     sh 'ls -la ..'
