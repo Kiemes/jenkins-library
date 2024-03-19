@@ -29,6 +29,8 @@ void call(Map parameters = [:], body) {
         .dependingOn('stageName').mixin('ordinal')
         .use()
 
+    echo "Config in piperStageWrapper: ${config}"
+
     stageLocking(config) {
         def containerMap = ContainerMap.instance.getMap().get(stageName) ?: [:]
         List environment = []
