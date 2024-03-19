@@ -34,6 +34,7 @@ void call(Map parameters = [:]) {
     Map config = ConfigurationHelper.newInstance(this)
         .loadStepDefaults([:], stageName).use()
     echo "Config1: ${config}"
+    echo "script.commonPipelineEnvironment: ${script.commonPipelineEnvironment}"
     config = ConfigurationHelper.newInstance(this)
         .loadStepDefaults([:], stageName)
         .mixinGeneralConfig(script.commonPipelineEnvironment, GENERAL_CONFIG_KEYS).use()
