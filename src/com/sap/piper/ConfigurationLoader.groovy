@@ -20,6 +20,7 @@ class ConfigurationLoader implements Serializable {
 
     static Map generalConfiguration(script){
         try {
+            this.step.echo ("[DEBUG] script?.commonPipelineEnvironment?.configuration?.general: ${script?.commonPipelineEnvironment?.configuration?.general}")
             return script?.commonPipelineEnvironment?.configuration?.general ?: [:]
         } catch (groovy.lang.MissingPropertyException mpe) {
             return [:]
