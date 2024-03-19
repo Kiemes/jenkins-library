@@ -32,12 +32,30 @@ void call(Map parameters = [:]) {
     stageName = stageName.replace('Declarative: ', '')
 
     Map config = ConfigurationHelper.newInstance(this)
+        .loadStepDefaults([:], stageName).use()
+    echo "Config1: ${config}"
+    config = ConfigurationHelper.newInstance(this)
+        .loadStepDefaults([:], stageName)
+        .mixinGeneralConfig(script.commonPipelineEnvironment, GENERAL_CONFIG_KEYS).use()
+    echo "Config2: ${config}"
+    config = ConfigurationHelper.newInstance(this)
+        .loadStepDefaults([:], stageName)
+        .mixinGeneralConfig(script.commonPipelineEnvironment, GENERAL_CONFIG_KEYS)
+        .mixinStageConfig(script.commonPipelineEnvironment, stageName, STEP_CONFIG_KEYS).use()
+    echo "Config3: ${config}"
+    config = ConfigurationHelper.newInstance(this)
+        .loadStepDefaults([:], stageName)
+        .mixinGeneralConfig(script.commonPipelineEnvironment, GENERAL_CONFIG_KEYS)
+        .mixinStageConfig(script.commonPipelineEnvironment, stageName, STEP_CONFIG_KEYS)
+        .mixin(parameters, PARAMETER_KEYS).use()
+    echo "Config4: ${config}"
+    config = ConfigurationHelper.newInstance(this)
         .loadStepDefaults([:], stageName)
         .mixinGeneralConfig(script.commonPipelineEnvironment, GENERAL_CONFIG_KEYS)
         .mixinStageConfig(script.commonPipelineEnvironment, stageName, STEP_CONFIG_KEYS)
         .mixin(parameters, PARAMETER_KEYS)
-        .addIfEmpty("vaultRotateSecretId", false)
-        .use()
+        .addIfEmpty("vaultRotateSecretId", false).use()
+    echo "Config5: ${config}"
 
     piperStageWrapper (script: script, stageName: stageName, stageLocking: false) {
         // rotate vault secret id if necessary
