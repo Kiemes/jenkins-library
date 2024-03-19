@@ -38,7 +38,7 @@ class ConfigurationHelper implements Serializable {
 
     ConfigurationHelper mixinGeneralConfig(commonPipelineEnvironment, Set filter = null, Map compatibleParameters = [:]){
         Map generalConfiguration = ConfigurationLoader.generalConfiguration([commonPipelineEnvironment: commonPipelineEnvironment])
-        this.step.echo ("[DEBUG] commonPipelineEnvironment: ${commonPipelineEnvironment}")
+        this.step.echo ("[DEBUG] commonPipelineEnvironment.configuration: ${commonPipelineEnvironment.configuration}")
         this.step.echo ("[DEBUG] generalConfiguration: ${generalConfiguration}")
         this.step.echo ("[DEBUG] filter: ${filter}")
         this.step.echo ("[DEBUG] compatibleParameters: ${compatibleParameters}")
