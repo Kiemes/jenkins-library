@@ -77,6 +77,9 @@ func runCloudFoundryDeploy(config *cloudFoundryDeployOptions, telemetryData *tel
 	log.Entry().Infof("General parameters: deployTool='%s', deployType='%s', cfApiEndpoint='%s', cfOrg='%s', cfSpace='%s'",
 		config.DeployTool, config.DeployType, config.APIEndpoint, config.Org, config.Space)
 
+	cfStartupTimeout := os.Getenv("CF_STARTUP_TIMEOUT")
+	log.Entry().Infof("General parameters: cfStartupTimeout='%s'", cfStartupTimeout)
+
 	err := validateAppName(config.AppName)
 
 	if err != nil {
