@@ -74,8 +74,8 @@ func cloudFoundryDeploy(config cloudFoundryDeployOptions, telemetryData *telemet
 
 func runCloudFoundryDeploy(config *cloudFoundryDeployOptions, telemetryData *telemetry.CustomData, influxData *cloudFoundryDeployInflux, command command.ExecRunner) error {
 
-	log.Entry().Infof("General parameters: deployTool='%s', deployType='%s', cfApiEndpoint='%s', cfOrg='%s', cfSpace='%s'",
-		config.DeployTool, config.DeployType, config.APIEndpoint, config.Org, config.Space)
+	log.Entry().Infof("General parameters: deployTool='%s', deployType='%s', cfApiEndpoint='%s', cfOrg='%s', cfSpace='%s', mtaExtensionDescriptor='%s'",
+		config.DeployTool, config.DeployType, config.APIEndpoint, config.Org, config.Space, config.MtaExtensionDescriptor)
 
 	err := validateAppName(config.AppName)
 

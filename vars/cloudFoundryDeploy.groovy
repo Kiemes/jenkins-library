@@ -24,6 +24,8 @@ void call(Map parameters = [:]) {
             credentials << [type: 'token', id: credentialsId, env: [toEnvVarKey(credentialsId)], resolveCredentialsId: false]
         }
     }
+
+    echo "[INFO]${STEP_NAME}] METADATA_FILE content: ${utils.readFile(METADATA_FILE)}"
     piperExecuteBin(parameters, STEP_NAME, METADATA_FILE, credentials)
 }
 
