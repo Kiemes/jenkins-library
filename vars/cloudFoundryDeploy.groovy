@@ -25,7 +25,6 @@ void call(Map parameters = [:]) {
         }
     }
 
-    echo "[INFO]${STEP_NAME}] METADATA_FILE content: ${utils.readFile(METADATA_FILE)}"
     piperExecuteBin(parameters, STEP_NAME, METADATA_FILE, credentials)
 }
 
