@@ -29,6 +29,7 @@ void call(Map parameters = [:], String stepName, String metadataFile, List crede
 
         prepareExecution(script, utils, parameters)
         prepareMetadataResource(script, metadataFile)
+
         Map stepParameters = prepareStepParameters(parameters)
         echo "Step params $stepParameters"
 
@@ -90,6 +91,7 @@ void call(Map parameters = [:], String stepName, String metadataFile, List crede
                                         sh "ulimit -a"
                                     }
 
+
                                     sh "${piperGoPath} ${stepName}${defaultConfigArgs}${customConfigArg}"
                                 }
                             } finally {
@@ -133,7 +135,6 @@ static Map prepareStepParameters(Map parameters) {
 // reused in sonarExecuteScan
 static void prepareMetadataResource(Script script, String metadataFile) {
     script.writeFile(file: ".pipeline/tmp/${metadataFile}", text: script.libraryResource(metadataFile))
-    echo "----------------- METADATA_FILE content: ${script.libraryResource(metadataFile)}"
 }
 
 // reused in sonarExecuteScan
