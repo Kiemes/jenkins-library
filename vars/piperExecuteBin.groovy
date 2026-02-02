@@ -91,7 +91,7 @@ void call(Map parameters = [:], String stepName, String metadataFile, List crede
                                         sh "ulimit -a"
                                     }
 
-
+                                    echo "[TOM]Executing pipeline step '${stepName}'. with defaultConfigArgs: '${defaultConfigArgs}' and customConfigArg: '${customConfigArg}'"
                                     sh "${piperGoPath} ${stepName}${defaultConfigArgs}${customConfigArg}"
                                 }
                             } finally {
@@ -119,6 +119,7 @@ static void prepareExecution(Script script, Utils utils, Map parameters = [:]) {
 
 // reused in sonarExecuteScan
 static Map prepareStepParameters(Map parameters) {
+    echo "Parameters in prepareStepParameters: ${parameters}"
     Map stepParameters = [:].plus(parameters)
 
     stepParameters.remove('script')
