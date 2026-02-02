@@ -119,7 +119,6 @@ static void prepareExecution(Script script, Utils utils, Map parameters = [:]) {
 
 // reused in sonarExecuteScan
 static Map prepareStepParameters(Map parameters) {
-    echo "Parameters in prepareStepParameters: ${parameters}"
     Map stepParameters = [:].plus(parameters)
 
     stepParameters.remove('script')
