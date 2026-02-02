@@ -108,6 +108,7 @@ var GeneralConfig GeneralConfigOptions
 
 // Execute is the starting point of the piper command line tool
 func Execute() {
+	log.Entry().Infof("[TOM] Version %s", GitCommit)
 	log.Entry().Infof("Version %s", GitCommit)
 
 	rootCmd.AddCommand(GcpPublishEventCommand())
