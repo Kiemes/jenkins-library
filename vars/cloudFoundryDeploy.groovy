@@ -11,6 +11,7 @@ void call(Map parameters = [:]) {
 
     def utils = parameters.juStabUtils ?: new Utils()
     utils.unstashAll(["deployDescriptor"])
+    sh "ls -la"
     List credentials = [
         [type: 'usernamePassword', id: 'cfCredentialsId', env: ['PIPER_username', 'PIPER_password']],
         [type: 'usernamePassword', id: 'dockerCredentialsId', env: ['PIPER_dockerUsername', 'PIPER_dockerPassword']]
